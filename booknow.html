@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Entry Ticket Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #3e3e3e;
+            background-image: url(images/indiagate.jpg);
+            
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .booking-container {
+            background-color: rgba(90, 89, 89, 0.8); /* Transparent background color */
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            top: 50%;
+            right: 80px;
+            transform: translateY(-50%);
+            animation: shake 0.6s ease-in-out infinite;
+        }
+
+        .booking-container.hold {
+            animation: none; /* Remove the animation after 2 seconds */
+        }
+
+        .booking-container h2 {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .booking-form {
+            margin-top: 20px;
+        }
+
+        .booking-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .booking-form input[type="text"],
+        .booking-form input[type="number"],
+        .booking-form select {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .date-picker {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .date-picker label {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .payment-options {
+            margin-top: 20px;
+        }
+
+        .payment-icon {
+            font-size: 30px;
+            margin-right: 10px;
+        }
+
+        .booking-form button {
+            background-color: orange;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .booking-form button:hover {
+            background-color: #f90;
+        }
+
+        /* Define the shake animation */
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(5px); }
+        }
+        .sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 60px; /* Adjust the width as needed */
+    height: 100%;
+    background-color: #f90;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.action-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.action-icons i {
+    transition: transform 0.3s ease-in-out;
+}
+
+.action-icons i:hover {
+    transform: scale(1.2);
+}
+
+
+.message-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            
+            width: 300px;
+            animation: bounce 3s infinite;
+            border-color: #f90;
+            
+        }
+
+        .message-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            border: 2px solid #f90;
+           
+            
+        }
+        .message-container .message-box p{
+            font-size: x-large;
+            color: #f90;
+            
+            margin-top: 5px; /* Adjust the margin-top to reduce space */
+            margin-bottom: 0;
+        }
+
+
+        /* Define the bounce animation */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(-20px, 10px);
+            }
+            50% {
+                transform: translate(0, 0);
+            }
+            75% {
+                transform: translate(20px, 10px);
+            }
+        }
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: all .2s linear;
+}
+
+*::selection{
+    background:var(--orange);
+    color:#fff;
+}
+:root{
+    --orange:#ffa500;
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 6rem;
+    scroll-behavior: smooth;
+}
+section{
+    padding: 2rem 9%;
+}
+.heading{
+    text-align: center;
+    padding: 2.5rem 0;
+}
+.heading span{
+    font-size: 3.5rem;
+    background: rgba(255,165,0,.2);
+    color: var(--orange);
+    border-radius: .5rem;
+    padding: .2rem 1rem;
+}
+.heading span.space{
+    background: none;
+}
+.btn{
+    display: inline-block;
+    margin-top: 1rem;
+    background: var(--orange);
+    color: #fff;
+    padding: .8rem 3rem;
+    border: .2rem solid var(--orange);
+    cursor: pointer;
+    font-size: 1.7rem;
+}
+.btn:hover{
+    background: rgba(255,165,0,.2);
+    color: var(--orange);
+}        
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #333;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 9%;
+}
+header .logo{
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: #fff;
+    text-transform: uppercase;
+}
+header .logo span{
+    color: var(--orange);
+}
+
+header .navbar a{
+    color: #fff;
+    font-size: 2rem;
+    margin:  0.8rem;
+}
+header .navbar a:hover{
+    color: var(--orange);
+}
+header .icons i{
+    font-size: 2.5rem;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 2rem;
+}
+header.icons i:hover{
+    color: var(--orange);
+}
+header .search-bar-container{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 2rem;
+    background: #333;
+    border-top: .1rem solid rgba(255,255,255,.2);
+    display: flex;
+    align-items: center;
+    z-index: 1001;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+header .search-bar-container.active{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+header .search-bar-container #search-bar{
+    width: 100%;
+    padding: 1rem;
+    text-transform: none;
+    color: #333;
+    font-size: 1.7rem;
+    border-radius: .5rem;
+}
+header .search-bar-container label{
+    color: #fff;
+    cursor: pointer;
+    font-size: 3rem;
+    margin-left: 1.5rem;
+}
+header .search-bar-container label:hover{
+    color: var(--orange);
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div id="menu-bar" class="fas fa-bars"></div>
+        
+        <a href="#" class="logo"><span>Sacred</span>Monuments</a> 
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+        </nav> 
+     
+        <div class="icons">
+            <i class="fas fa-search" id="search-btn"></i>
+            <i class="fas fa-user" id="login-btn"></i>
+        </div>
+    
+        <form action="" class="search-bar-container">
+            <input type="search" id="search-bar" placeholder="search here...">
+            <label for="search-bar" class="fas fa-search"></label>
+            
+        </form>
+        
+    </header>
+    <div class="booking-container" id="booking-container">
+        <h2>Entry Ticket Booking</h2>
+        <form class="booking-form" action="#" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
+
+            <div class="date-picker">
+                <label for="date">Select Date:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+
+            <label for="ticket-quantity">Number of Tickets:</label>
+            <input type="number" id="ticket-quantity" name="ticket-quantity" required>
+
+            <label for="ticket-type">Ticket Type:</label>
+            <select id="ticket-type" name="ticket-type" required>
+                <option value="standard">Standard</option>
+                <option value="vip">VIP</option>
+            </select>
+
+            
+
+            <button type="submit">Book Tickets</button>
+        </form>
+        
+    </div>
+     <!-- Right Sidebar for Actions -->
+     <aside class="sidebar">
+        <div class="action-icons">
+            <i class="fas fa-phone-alt" id="call-icon"></i>
+            <i class="fas fa-comments" id="chat-icon"></i>
+        </div>
+    </aside>
+
+    <div class="message-container">
+        <div class="message-box">
+            <h2>Gateway Of India</h2>
+            <p><b>Open now!</b></p>
+        </div>
+    </div>
+    
+    <script>
+        // Add the 'hold' class to stop the shake animation after 2 seconds
+        document.addEventListener("DOMContentLoaded", function() {
+            const bookingContainer = document.getElementById("booking-container");
+            setTimeout(function() {
+                bookingContainer.classList.add("hold");
+            }, 1000); // 1000 milliseconds (1 seconds)
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+           

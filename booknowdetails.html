@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-
+    scale=1.0">
+    <title>All Products-RedStore </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?
+    family=Poppins:wght@300;400;500;600;700&display=swap" 
+    rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-
+    free@6.2.1/css/fontawesome.min.css">
+    <style>
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            
+           
+        }
+
+        .booking-container {
+            background-color: rgba(90, 89, 89, 0.8); /* Transparent background color */
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            top: 50%;
+            right: 80px;
+            transform: translateY(-50%);
+            animation: shake 0.6s ease-in-out infinite;
+        }
+
+        .booking-container.hold {
+            animation: none; /* Remove the animation after 2 seconds */
+        }
+
+        .booking-container h2 {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .booking-form {
+            margin-top: 20px;
+        }
+
+        .booking-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .booking-form input[type="text"],
+        .booking-form input[type="number"],
+        .booking-form select {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .date-picker {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .date-picker label {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .payment-options {
+            margin-top: 20px;
+        }
+
+        .payment-icon {
+            font-size: 30px;
+            margin-right: 10px;
+        }
+
+        .booking-form button {
+            background-color: orange;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .booking-form button:hover {
+            background-color: #f90;
+        }
+
+        /* Define the shake animation */
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(5px); }
+        }
+        .sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 60px; /* Adjust the width as needed */
+    height: 100%;
+    background-color: #f90;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.action-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.action-icons i {
+    transition: transform 0.3s ease-in-out;
+}
+
+.action-icons i:hover {
+    transform: scale(1.2);
+}
+
+
+.message-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            
+            width: 300px;
+            animation: bounce 3s infinite;
+            border-color: #f90;
+            
+        }
+
+        .message-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            
+            padding: 15px;
+            text-align: center;
+            border: 2px solid #f90;
+           
+            
+        }
+        .message-container .message-box p{
+            font-size: x-large;
+            color: #f90;
+            
+            margin-top: 5px; /* Adjust the margin-top to reduce space */
+            margin-bottom: 0;
+        }
+
+
+        /* Define the bounce animation */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(-20px, 10px);
+            }
+            50% {
+                transform: translate(0, 0);
+            }
+            75% {
+                transform: translate(20px, 10px);
+            }
+        }
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: all .2s linear;
+}
+
+*::selection{
+    background:var(--orange);
+    color:#fff;
+}
+
+
+a{
+    text-decoration: none;
+    color: #00bdf6;
+}
+p{
+    color: #303030;
+    font-size: large;
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+.col-2{
+    flex-basis: 50%;
+    min-width: 300px;
+
+}
+.col-2 img{
+    max-width: 100%;
+    padding: 50px 0;
+}
+.col-2 a{
+    text-decoration: underline;
+}
+.btn{
+    display: inline-block;
+    background: #ff523b;
+    color: #fff;
+    padding: 8px 30px;
+    margin: 30px 0px;
+    border-right: 30px;
+    transition: background 0.5s ;
+}
+.btn:hover{
+    background: #563434;
+}
+.header{
+    background: radial-gradient(#fff,#ffd6d6);
+}
+.header .row{
+    margin-top: 70px;
+
+}
+.categories{
+    margin: 70px 0;
+}
+.col-3{
+    flex-basis: 30%;
+    min-width: 250px;
+    margin-bottom: 30px;
+}
+.col-3 img{
+    width: 100%;
+}
+.small-container{
+    
+    max-width: 1080px;
+    margin: auto;
+    
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.col-4{
+    flex-basis: 25%;
+    padding: 10px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    transition: transform 0.5s;
+}
+.col-4 img{
+    width: 100%;
+}
+.title{
+    text-align: center;
+    margin: 0auto 80px;
+    position: relative;
+    line-height: 60px;
+    color: #555;
+}
+.title::after{
+    content: '';
+    background: #ff523b;
+    width: 80px;
+    height: 5px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+h4{
+    color: #555;
+    font-weight: normal;
+}
+.col-4 p{font-size: 14px;
+}
+.rating .fa{
+    color: #ff523b;
+}
+.col-4:hover{
+    transform: translateY(-5px);
+}        
+
+.single-product{
+   margin-top: 80px;
+
+}
+.single-product .col-2 img{
+    padding: 0;
+}
+.single-product .col-2{
+    padding: 20px;
+}
+.single-product h4{
+    margin: 20px 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.single-product input{
+    width: 50px;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 20px;
+    margin-right: 10px;
+    border: 1px solid #ff523b;
+    
+}
+input:focus{
+    outline: none;
+}
+.single-product .fa{
+    color: #ff523b;
+    margin-left: 10px;
+}
+.small-img-row{
+    display: flex;
+    justify-content: space-between;
+}
+.small-img-col{
+    flex-basis: 24%;
+    cursor: pointer;
+}
+:root{
+    --orange:#ffa500;
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 6rem;
+    scroll-behavior: smooth;
+}
+section{
+    padding: 2rem 9%;
+}
+.heading{
+    text-align: center;
+    padding: 2.5rem 0;
+}
+.heading span{
+    font-size: 3.5rem;
+    background: rgba(255,165,0,.2);
+    color: var(--orange);
+    border-radius: .5rem;
+    padding: .2rem 1rem;
+}
+.heading span.space{
+    background: none;
+}
+.btn{
+    display: inline-block;
+    margin-top: 1rem;
+    background: var(--orange);
+    color: #fff;
+    padding: .8rem 3rem;
+    border: .2rem solid var(--orange);
+    cursor: pointer;
+    font-size: 1.7rem;
+}
+.btn:hover{
+    background: rgba(255,165,0,.2);
+    color: var(--orange);
+}        
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #333;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 9%;
+}
+header .logo{
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: #fff;
+    text-transform: uppercase;
+}
+header .logo span{
+    color: var(--orange);
+}
+
+header .navbar a{
+    color: #fff;
+    font-size: 2rem;
+    margin:  0.8rem;
+}
+header .navbar a:hover{
+    color: var(--orange);
+}
+header .icons i{
+    font-size: 2.5rem;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 2rem;
+}
+header.icons i:hover{
+    color: var(--orange);
+}
+header .search-bar-container{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 2rem;
+    background: #333;
+    border-top: .1rem solid rgba(255,255,255,.2);
+    display: flex;
+    align-items: center;
+    z-index: 1001;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+header .search-bar-container.active{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+header .search-bar-container #search-bar{
+    width: 100%;
+    padding: 1rem;
+    text-transform: none;
+    color: #333;
+    font-size: 1.7rem;
+    border-radius: .5rem;
+}
+header .search-bar-container label{
+    color: #fff;
+    cursor: pointer;
+    font-size: 3rem;
+    margin-left: 1.5rem;
+}
+header .search-bar-container label:hover{
+    color: var(--orange);
+}
+
+    </style>
+</head>
+<body>
+  
+    <header>
+        <div id="menu-bar" class="fas fa-bars"></div>
+        
+        <a href="#" class="logo"><span>Sacred</span>Monuments</a> 
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+        </nav> 
+     
+        <div class="icons">
+            <i class="fas fa-search" id="search-btn"></i>
+            <i class="fas fa-user" id="login-btn"></i>
+        </div>
+    
+        <form action="" class="search-bar-container">
+            <input type="search" id="search-bar" placeholder="search here...">
+            <label for="search-bar" class="fas fa-search"></label>
+            
+        </form>
+        
+    </header>
+    
+      
+        
+    
+    <!--------single procuct details------>
+      <div class="small-container single-product" >
+        <div class="row">
+            <div class="col-2">
+                <img src="images/g2.jpeg" width="100%" id="ProductImg">
+    
+                <div class="small-img-row">
+                    <div class="small-img-col">
+                        <img src="images/g2.jpeg" width="100%" class="small-img">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="images/g3.jpg" width="100%" class="small-img">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="images/g1.jpeg" width="100%" class="small-img">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="images/gateway2.jpeg" width="100%" class="small-img">
+                    </div>
+                </div>
+    
+    
+    
+            </div>
+            <div class="col-2">
+                <p>Sacred Monument</p>
+                <h1>Gateway of India</h1>
+                <h4>FREE</h4>
+                <h4><a href="https://mumbaicity.gov.in/tourist-place/gateway-of-india/"><u>Go to Website</u></a></h4>
+                <input type="number" value="1">
+                <a href="" class="btn">Book</a>
+                <h3>Details<i class="fa fa-indent"></i></h3>
+                <br>
+                <p>Hotel Apollo Mahakavi<br>Bhushan Road,Mumbai,<br>Maharashtra 400001.
+                </p>
+            </div>
+        </div>
+      </div>
+        
+    <!---------title------->
+    <div class="small-container">
+        <div class="row row-2">
+            <h2>Explore More</h2>
+            
+        </div>
+    
+    
+    <!------products--------->
+        <div class="small-container">
+    
+            
+            <div class="row">
+                <div class="col-4">
+                    <img src="images/I1.webp">
+                    <h4>Roadster Watch</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p>$50.00</p>
+                </div>
+                <div class="col-4">
+                    <img src="images/I2.jpeg">
+                    <h4>Sparx Shoes</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p>$50.00</p>
+                </div>
+                <div class="col-4">
+                    <img src="images/I3.jpg">
+                    <h4>Paragon Shoes</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div>
+                    <p>$50.00</p>
+                </div>
+                <div class="col-4">
+                    <img src="images/I4.jpeg">
+                    <h4>Nike Trouser</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p>$50.00</p>
+                </div>
+                </div>
+    
+               
+            </div>
+            <div class="booking-container" id="booking-container">
+        <h2>Entry Ticket Booking</h2>
+        <form class="booking-form" action="#" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
+
+            <div class="date-picker">
+                <label for="date">Select Date:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+
+            <label for="ticket-quantity">Number of Tickets:</label>
+            <input type="number" id="ticket-quantity" name="ticket-quantity" required>
+
+            <label for="ticket-type">Ticket Type:</label>
+            <select id="ticket-type" name="ticket-type" required>
+                <option value="standard">Standard</option>
+                <option value="vip">VIP</option>
+            </select>
+
+            
+
+            <button type="submit">Book Tickets</button>
+        </form>
+        
+    </div>
+     <!-- Right Sidebar for Actions -->
+     <aside class="sidebar">
+        <div class="action-icons">
+            <a href="contact.html">
+            <i class="fas fa-phone-alt" id="call-icon"></i>
+        </a>
+            <a href="map.html">
+            <i class="fas fa-comments" id="chat-icon"></i>
+        </a>
+        </div>
+    </aside>
+
+    <div class="message-container">
+        <div class="message-box">
+            <h2>Gateway Of India</h2>
+            <p><b>Open now!</b></p>
+        </div>
+    </div>
+    
+    <script>
+        // Add the 'hold' class to stop the shake animation after 2 seconds
+        document.addEventListener("DOMContentLoaded", function() {
+            const bookingContainer = document.getElementById("booking-container");
+            setTimeout(function() {
+                bookingContainer.classList.add("hold");
+            }, 1000); // 1000 milliseconds (1 seconds)
+        });
+        </script>
+    
+    
+    <!-----js for toggle menu-------->
+    <script>
+        var MenuItems=document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+        function menutoggle(){
+            if(MenuItems.style.maxHeight =="0px")
+            {
+                MenuItems.style.maxHeight ="200px";
+            }
+            else{
+                MenuItems.style.maxHeight ="0px";
+            }
+        }
+    
+    
+    </script>
+    
+    <!-------js for product gallery------->
+    <script>
+        var ProductImg= document.getElementById("ProductImg")
+        var SmallImg=document.getElementsByClassName("small-img")
+        SmallImg[0].onclick = function()
+        {
+            ProductImg.src = SmallImg[0].src;
+        }
+        SmallImg[1].onclick = function()
+        {
+            ProductImg.src = SmallImg[1].src;
+        }
+        SmallImg[2].onclick = function()
+        {
+            ProductImg.src = SmallImg[2].src;
+        }
+        SmallImg[3].onclick = function()
+        {
+            ProductImg.src = SmallImg[3].src;
+        }
+    </script>
+    
+    </body>
+    </html>
